@@ -1,3 +1,3 @@
 [build]
-  command = "npx pnpm install && npx vite build artifacts/aum-textile"
-  publish = "artifacts/aum-textile/dist"
+  command = "npx pnpm install && npx vite build"
+  publish = "dist"
