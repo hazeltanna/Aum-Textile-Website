@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Aum Textile"
+description = "A premium institutional-linen website for browsing collections, discovering textile stories, and sending project enquiries."
+version = "1.0.0"
+id = "artifacts/aum-textile"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23745
+
+[services.development]
+run = "pnpm --filter @workspace/aum-textile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/aum-textile", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/aum-textile/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23745"
+BASE_PATH = "/"

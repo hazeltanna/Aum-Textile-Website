@@ -1,0 +1,1 @@
+- [Python package setup](python-package-setup.md) — use the workspace package-management flow when shell Python lacks pip or is externally managed.
