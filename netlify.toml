@@ -3,4 +3,5 @@
   publish = "dist"
 
 [build.environment]
-  PORT = "8080"
+  PORT = ""
+  BASE_PATH = "/"
