@@ -1,0 +1,65 @@
+Role & Task:
+Act as a Principal Frontend Engineer and Luxury Brand Designer. Build a complete, highly responsive B2B web application for "Aum + Textile". 
+
+This is a heritage textile manufacturer providing premium linens to 5-star hotels, luxury resorts, hospital suites, and export clients. 
+
+The site MUST NOT look like generic AI code, nor should it look like a trendy, cheap DTC DTC startup. It needs a timeless, "old-money" luxury aesthetic—understated, quiet sophistication, heavy editorial weight, crisp serif typography, muted architectural color tones, and absolute functional clarity for wholesale buyers.
+
+---
+
+1. Visual Identity & "Old Money" Aesthetic Guidelines
+- Color Palette: Warm linen off-white (`#FDFBF7`), aged cream (`#F4EFE6`), deep olive/forest undertones, and warm dark charcoal (`#1A1A1A`) instead of harsh pure black.
+- Typography: Sophisticated serif headings (e.g., Cormorant Garamond, Playfair, or Italian Didot style) paired with clean, highly readable, widely-tracked sans-serif body text.
+- Layout Style: High-end architectural grid layout. Asymmetric compositions, generous whitespace, understated border dividers, and high-resolution texture close-ups that emphasize weave and craft over flashy UI gimmicks.
+- NO AI Hallucinations: Do NOT invent fake studio hours, fake showrooms in Delhi, or fictional quote notes. Stick 100% strictly to the factual business details provided below.
+
+---
+
+2. Core Business Details (STRICT DATA LOCK - DO NOT ALTER)
+- Brand Name: Aum + Textile
+- Tagline: Premium Institutional & Export Bed, Bath & Table Linen
+- Address: Shanti Khana Chowl, 326, Mangaldas Market, Marine Lines East, Chirabazar, Kalbadevi, Mumbai, Maharashtra 400002
+- Phone / WhatsApp: +91 9820780027
+- Email: aumtextile21@gmail.com
+- Key Institutional Clients: Taj Hotels, Apollo Hospitals, Fortis Healthcare, Lemon Tree Hotels, Oberoi Group
+- Core Value Pillars: 100% Pure Cotton & Premium Fibres, Mill-Direct Wholesale Value, Custom Sizes & Dyes, Export Ready, 500+ Active Designs.
+
+---
+
+3. Page Structure & Component Rules
+
+A. Header:
+- Ultra-clean top navigation bar with a subtle off-white background and thin gold/bronze border divider.
+- Left: "AUM + TEXTILE" brand logo in elegant serif typography.
+- Navigation: "Collections", "The Mill Advantage", "Client Portfolio", "Contact".
+- Action: "Request Complete Catalogue" button (opens quote drawer).
+
+B. Hero Section (Editorial Luxury):
+- Split layout: On the left, quiet, commanding serif headline ("Textiles for Institutions That Demand Distinction"). On the right, a large, high-res image frame featuring rich hotel-grade bedding textures.
+- Floating Frosted Bar: A sleek status strip highlighting real operational metrics: "20+ Years of Mill Experience", "500+ Active Designs", "Direct Manufacturer Value".
+
+C. Client Heritage Marquee:
+- Smooth horizontal marquee displaying prestigious B2B client names (Taj Hotels, Oberoi Group, Apollo Hospitals, Fortis, Lemon Tree) rendered in understated muted typography.
+
+D. Product & Design Collections (Interactive Masonry Grid):
+- Tabbed Filter Bar: "All Collections", "Hospitality Bedding", "Healthcare & Suites", "Table Linen & Bath".
+- Dynamic Layout: Dynamic masonry grid for featured designs (Meadow Grid, Calla Lily, Garden Bloom, Royal Damask, Botanical Scatter, Cypress Heritage, Classic Plaid).
+- Product Cards:
+  - High-res fabric thumbnails with hover-zoom micro-interactions.
+  - Fabric details: Composition (e.g., 100% Pure Cotton, Sateen/Percale weave) and subtle swatch indicators.
+  - Price Tag Replacement: Display a subtle "Factory-Direct Wholesale Rates" badge.
+  - Action: "Quick Spec Sheet" trigger and "Enquire For Bulk Order".
+
+E. "The Mill Advantage" (B2B Value Proposition):
+- Dark-mode accent section (`#1A1A1A` charcoal background) providing visual contrast.
+- Highlights: Direct-from-mill pricing without distributor markups, custom thread counts/dimensions, Pan-India & global export logistics.
+
+F. "Let's Talk Business" B2B Inquiry Section (Form):
+- Clean, structured form designed for hotel managers, hospital procurement teams, and exporters.
+- Form fields: Full Name, Organization / Hotel Name, Corporate Email, Phone Number, Product Category Dropdown, Estimated Volume, Message field.
+- Displays the exact Mumbai address, phone number (+91 9820780027), and email (aumtextile21@gmail.com) clearly on the side.
+
+G. Footer:
+- Minimalist, elegant footer containing copyright notice, brand address, direct phone link, and clean category shortcuts.
+
+Please write the full, responsive frontend code implementing these exact specs and design direction.
