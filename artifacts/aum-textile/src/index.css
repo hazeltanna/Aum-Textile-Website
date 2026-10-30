@@ -106,8 +106,12 @@ i { font-family: var(--serif); font-style: italic; color: var(--moss); font-weig
 .product-info h3 { margin: 0; color: var(--ink); font: 400 30px var(--serif); letter-spacing: -.02em; }
 .product-spec { margin: 5px 0 0; color: var(--ink-soft); font-size: 11px; }
 .product-spec span { padding: 0 5px; color: var(--ochre); }
-.swatches { display: flex; flex-wrap: wrap; gap: 5px; padding-top: 20px; }
-.swatches span, .spec-swatch-row i { width: 13px; height: 13px; display: block; border: 1px solid rgba(36,43,40,.19); border-radius: 50%; }
+.swatches { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; padding-top: 20px; }
+.swatches button, .spec-swatch-row i { width: 13px; height: 13px; display: block; border: 1px solid rgba(36,43,40,.19); border-radius: 50%; }
+.swatches button { padding: 0; cursor: pointer; outline-offset: 3px; transition: transform .2s ease, box-shadow .2s ease; }
+.swatches button:hover { transform: scale(1.15); }
+.swatches button.is-active { box-shadow: 0 0 0 2px var(--paper), 0 0 0 3px var(--moss-dark); }
+.swatch-name { margin-left: 8px; color: var(--ink-soft); font: 9px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
 .product-actions { display: flex; gap: 8px; border-top: 1px solid var(--line); }
 .product-actions button { display: inline-flex; align-items: center; gap: 7px; border: 0; background: transparent; color: var(--ink-soft); padding: 10px 0; font: 9px var(--mono); letter-spacing: .05em; text-transform: uppercase; }
 .product-actions button + button { margin-left: auto; color: var(--ink); }

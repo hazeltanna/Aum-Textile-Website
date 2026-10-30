@@ -12,6 +12,7 @@ import catalog06 from "@assets/aum-images/catalog-06.jpg";
 import catalog07 from "@assets/aum-images/catalog-07.jpg";
 
 type CollectionName = "All Collections" | "Hospitality Bedding" | "Healthcare & Suites" | "Table Linen & Bath";
+type Swatch = { name: string; hex: string };
 type Product = {
   id: string;
   name: string;
@@ -19,18 +20,18 @@ type Product = {
   image: string;
   composition: string;
   weave: string;
-  swatches: string[];
+  swatches: Swatch[];
   detail: string;
 };
 
 const products: Product[] = [
-  { id: "01", name: "Meadow Grid", category: "Hospitality Bedding", image: catalog01, composition: "100% Pure Cotton", weave: "Percale", swatches: ["#b8c5a9", "#d2b6a7", "#f3efe6"], detail: "A calm botanical grid designed for repeatable hotel-room schemes." },
-  { id: "02", name: "Calla Lily", category: "Hospitality Bedding", image: catalog02, composition: "100% Pure Cotton", weave: "Sateen", swatches: ["#c6b4c7", "#ded8d2", "#b9c9ca"], detail: "A floral study with a soft hand and a composed, residential feel." },
-  { id: "03", name: "Garden Bloom", category: "Healthcare & Suites", image: catalog03, composition: "Premium Cotton Fibre", weave: "Percale", swatches: ["#d5e4e4", "#b8c9c0", "#f8f5ed"], detail: "A light botanical pattern for suites and patient rooms that need warmth without visual noise." },
-  { id: "04", name: "Royal Damask", category: "Table Linen & Bath", image: catalog04, composition: "100% Pure Cotton", weave: "Sateen", swatches: ["#e8e1d7", "#cac4bb", "#b0aaa0"], detail: "A refined damask ground for dining, lounge, and bath applications." },
-  { id: "05", name: "Botanical Scatter", category: "Hospitality Bedding", image: catalog05, composition: "100% Pure Cotton", weave: "Percale", swatches: ["#e9e1d5", "#b7bab1", "#8f9c99"], detail: "An expressive botanical print with a generous, easy-to-specify repeat." },
-  { id: "06", name: "Cypress Heritage", category: "Healthcare & Suites", image: catalog06, composition: "Premium Cotton Fibre", weave: "Sateen", swatches: ["#d9e0d7", "#eee9df", "#c2cec5"], detail: "A considered heritage pattern for high-use rooms and residential suites." },
-  { id: "07", name: "Classic Plaid", category: "Table Linen & Bath", image: catalog07, composition: "100% Pure Cotton", weave: "Percale", swatches: ["#b9d0ca", "#f1eee8", "#a7b7b5"], detail: "A disciplined plaid that moves easily between table, bath, and bedroom." },
+  { id: "01", name: "Meadow Grid", category: "Hospitality Bedding", image: catalog01, composition: "100% Pure Cotton", weave: "Percale", swatches: [{ name: "Sage Mist", hex: "#b8c5a9" }, { name: "Blush Clay", hex: "#d2b6a7" }, { name: "Natural Ivory", hex: "#f3efe6" }], detail: "A calm botanical grid designed for repeatable hotel-room schemes." },
+  { id: "02", name: "Calla Lily", category: "Hospitality Bedding", image: catalog02, composition: "100% Pure Cotton", weave: "Sateen", swatches: [{ name: "Lilac Veil", hex: "#c6b4c7" }, { name: "Oat Stone", hex: "#ded8d2" }, { name: "Mist Blue", hex: "#b9c9ca" }], detail: "A floral study with a soft hand and a composed, residential feel." },
+  { id: "03", name: "Garden Bloom", category: "Healthcare & Suites", image: catalog03, composition: "Premium Cotton Fibre", weave: "Percale", swatches: [{ name: "Frost Aqua", hex: "#d5e4e4" }, { name: "Eucalyptus", hex: "#b8c9c0" }, { name: "Chalk White", hex: "#f8f5ed" }], detail: "A light botanical pattern for suites and patient rooms that need warmth without visual noise." },
+  { id: "04", name: "Royal Damask", category: "Table Linen & Bath", image: catalog04, composition: "100% Pure Cotton", weave: "Sateen", swatches: [{ name: "Linen", hex: "#e8e1d7" }, { name: "Driftwood", hex: "#cac4bb" }, { name: "Taupe Stone", hex: "#b0aaa0" }], detail: "A refined damask ground for dining, lounge, and bath applications." },
+  { id: "05", name: "Botanical Scatter", category: "Hospitality Bedding", image: catalog05, composition: "100% Pure Cotton", weave: "Percale", swatches: [{ name: "Parchment", hex: "#e9e1d5" }, { name: "Olive Grey", hex: "#b7bab1" }, { name: "Slate Sage", hex: "#8f9c99" }], detail: "An expressive botanical print with a generous, easy-to-specify repeat." },
+  { id: "06", name: "Cypress Heritage", category: "Healthcare & Suites", image: catalog06, composition: "Premium Cotton Fibre", weave: "Sateen", swatches: [{ name: "Pale Cypress", hex: "#d9e0d7" }, { name: "Cream", hex: "#eee9df" }, { name: "Spring Green", hex: "#c2cec5" }], detail: "A considered heritage pattern for high-use rooms and residential suites." },
+  { id: "07", name: "Classic Plaid", category: "Table Linen & Bath", image: catalog07, composition: "100% Pure Cotton", weave: "Percale", swatches: [{ name: "Seafoam", hex: "#b9d0ca" }, { name: "Bone", hex: "#f1eee8" }, { name: "Dusty Teal", hex: "#a7b7b5" }], detail: "A disciplined plaid that moves easily between table, bath, and bedroom." },
 ];
 
 const navItems = [
@@ -40,7 +41,7 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-function useReveal() {
+function useReveal(dependencies: unknown[]) {
   useEffect(() => {
     const nodes = document.querySelectorAll<HTMLElement>("[data-reveal]");
     const observer = new IntersectionObserver(
@@ -49,7 +50,7 @@ function useReveal() {
     );
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
-  }, []);
+  }, dependencies);
 }
 
 function Header({ onCatalogue }: { onCatalogue: () => void }) {
@@ -108,6 +109,7 @@ function BusinessIntro() {
 }
 
 function CollectionCard({ product, onSpec, onEnquire }: { product: Product; onSpec: (product: Product) => void; onEnquire: (product: Product) => void }) {
+  const [activeShade, setActiveShade] = useState(0);
   return <article className="business-product" data-reveal>
     <button className="product-visual" onClick={() => onSpec(product)} aria-label={`View ${product.name} quick spec sheet`} data-testid={`button-spec-${product.id}`}>
       <img src={product.image} alt={`${product.name} ${product.category} textile`} />
@@ -116,7 +118,7 @@ function CollectionCard({ product, onSpec, onEnquire }: { product: Product; onSp
     </button>
     <div className="product-info">
       <div><p className="product-category">{product.category}</p><h3>{product.name}</h3><p className="product-spec">{product.composition} <span>·</span> {product.weave}</p></div>
-      <div className="swatches" aria-label={`${product.name} available colour swatches`}>{product.swatches.map((swatch) => <span style={{ background: swatch }} key={swatch} />)}</div>
+      <div className="swatches" role="group" aria-label={`${product.name} available colour swatches`}>{product.swatches.map((swatch, index) => <button type="button" key={swatch.hex} style={{ background: swatch.hex }} className={index === activeShade ? "is-active" : ""} aria-pressed={index === activeShade} aria-label={`Show ${swatch.name}`} title={swatch.name} onClick={() => setActiveShade(index)} />)}<span className="swatch-name" aria-live="polite">{product.swatches[activeShade].name}</span></div>
     </div>
     <div className="product-actions"><button onClick={() => onSpec(product)} data-testid={`button-quick-spec-${product.id}`}>Quick spec sheet <Download size={14} /></button><button onClick={() => onEnquire(product)} data-testid={`button-bulk-order-${product.id}`}>Bulk order enquiry <ArrowUpRight size={14} /></button></div>
   </article>;
@@ -126,6 +128,7 @@ function Collections({ onSpec, onEnquire }: { onSpec: (product: Product) => void
   const [active, setActive] = useState<CollectionName>("All Collections");
   const filters: CollectionName[] = ["All Collections", "Hospitality Bedding", "Healthcare & Suites", "Table Linen & Bath"];
   const visible = useMemo(() => active === "All Collections" ? products : products.filter((product) => product.category === active), [active]);
+  useReveal([visible]);
   return <section className="collections section-business" id="collections">
     <div className="shell">
       <div className="section-heading" data-reveal><div><p className="eyebrow">The design library</p><h2>A considered<br /><i>working selection.</i></h2></div><p>Explore a working selection from 500+ active designs across hospitality, healthcare, bath and table.</p></div>
@@ -196,7 +199,7 @@ function EnquiryDrawer({ onClose, selectedProduct }: { onClose: () => void; sele
 
 function SpecSheet({ product, onClose, onEnquire }: { product: Product; onClose: () => void; onEnquire: (product: Product) => void }) {
   return <div className="drawer-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
-    <aside className="spec-sheet" role="dialog" aria-modal="true" aria-labelledby="spec-title"><button className="drawer-close" onClick={onClose} aria-label="Close spec sheet"><X size={20} /></button><img src={product.image} alt={`${product.name} specification reference`} /><div className="spec-content"><p className="eyebrow">{product.category}</p><h2 id="spec-title">{product.name}</h2><p>{product.detail}</p><div className="spec-table"><div><span>Composition</span><strong>{product.composition}</strong></div><div><span>Weave</span><strong>{product.weave}</strong></div><div><span>Commercial</span><strong>Factory-direct wholesale rates</strong></div></div><div className="spec-swatch-row"><span>Colour direction</span>{product.swatches.map((swatch) => <i style={{ background: swatch }} key={swatch} />)}</div><button className="solid-button" onClick={() => onEnquire(product)}>Enquire for bulk order <ArrowUpRight size={15} /></button></div></aside>
+    <aside className="spec-sheet" role="dialog" aria-modal="true" aria-labelledby="spec-title"><button className="drawer-close" onClick={onClose} aria-label="Close spec sheet"><X size={20} /></button><img src={product.image} alt={`${product.name} specification reference`} /><div className="spec-content"><p className="eyebrow">{product.category}</p><h2 id="spec-title">{product.name}</h2><p>{product.detail}</p><div className="spec-table"><div><span>Composition</span><strong>{product.composition}</strong></div><div><span>Weave</span><strong>{product.weave}</strong></div><div><span>Commercial</span><strong>Factory-direct wholesale rates</strong></div></div><div className="spec-swatch-row"><span>Colour direction</span>{product.swatches.map((swatch) => <i style={{ background: swatch.hex }} key={swatch.hex} />)}</div><button className="solid-button" onClick={() => onEnquire(product)}>Enquire for bulk order <ArrowUpRight size={15} /></button></div></aside>
   </div>;
 }
 
@@ -204,7 +207,7 @@ export default function B2BHome() {
   const [enquiryOpen, setEnquiryOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [specProduct, setSpecProduct] = useState<Product | null>(null);
-  useReveal();
+  useReveal([]);
   const openEnquiry = (product?: Product) => { setSpecProduct(null); setSelectedProduct(product ?? null); setEnquiryOpen(true); };
   return <div className="business-page">
     <Header onCatalogue={() => openEnquiry()} />
